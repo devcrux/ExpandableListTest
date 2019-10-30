@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ExpandableListTest.MainPage">
+
+    <ListView x:Name="itemLists" HasUnevenRows="True" ItemsSource="{Binding}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Margin="10">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ItemSelected"/>
+                        </Grid.GestureRecognizers>
+                        <StackLayout>
+                            <Grid x:Name="visibleGrid" Padding="10" BackgroundColor="White">
+                                <Label Text="{Binding Item1}"/>
+                                <Image x:Name="ArrowImg" Source="downArrow.png" Margin="10,5" WidthRequest="15" HeightRequest="10"  VerticalOptions="Center" HorizontalOptions="End"/>
+                            </Grid>
+                            <Grid x:Name="inVisibleGrid" BackgroundColor="Gray" IsVisible="False">
+                                <Label Text="{Binding Item2}"/>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>
